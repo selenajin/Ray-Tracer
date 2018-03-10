@@ -1,7 +1,7 @@
 #ifndef RAY_H
 #define RAY_H
 #include "vec3.h"
-
+/* All code by Peter Shirley from "Ray Tracing in One Weekend"*/
 class ray{
   public:
     ray(){}
