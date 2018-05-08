@@ -29,6 +29,7 @@ class sphere:public shape{
           rec.t = temp;
           rec.p = r.point_at_parameter(rec.t);
           rec.normal = (rec.p - center)/radius;
+          rec.type = type;
           return true;
         }
         temp = (-b + sqrt(b*b-4*a*c))/(2*a);
@@ -36,10 +37,16 @@ class sphere:public shape{
           rec.t = temp;
           rec.p = r.point_at_parameter(rec.t);
           rec.normal = (rec.p - center)/radius;
+          rec.type = type;
           return true;
         }
       }
       return false;
+    }
+
+    virtual bool bounding_box(bvh& box) const{
+      box = bvh(center - vec3(radius, radius, radius), center + vec3(radius, radius, radius));
+      return true;
     }
 };
 

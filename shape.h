@@ -1,7 +1,10 @@
 #ifndef SHAPE_H
 #define SHAPE_H
-#include "ray.h"
+
+#include "bvh.h"
 /* All code by Peter Shirley from "Ray Tracing in One Weekend"*/
+class material;
+
 struct hit_record{
   float t;
   int type;
@@ -13,8 +16,9 @@ struct hit_record{
 
 class shape{
   public:
-    int type;
+    vec3 center;
     virtual bool is_hit(const ray& r, float tmin, float tmax, hit_record& rec) const = 0;
+    virtual bool bounding_box(bvh& box) const = 0;
 };
 
 #endif
